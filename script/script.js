@@ -13,13 +13,12 @@ $(document).ready ( function(){
     var su_wrap = $(".useful_info-copy_wrapper_su");
     var message = $(".message");
 
+
     $.ajax({
         type:"POST",
         dataType: "json",
         url:"/break/modules/check_login.php",
         success:function(respons){
-                var access = respons["access"];
-                localStorage.setItem('access', access); // передаем уровень допуска в файл _personal js чтобы построить правильно сетку кпэ
             if(respons == 0) {
                 if(path.toLowerCase() !='/break/pages/login.html'){
                     location.href = "/break/pages/login.html"; // проверяем надо ли нам перенаправлять на страницу логина
@@ -38,7 +37,7 @@ $(document).ready ( function(){
                     adminli.remove();
                     taxili.remove();
                     breakli.remove();
-                    if((respons["access"]==1 || respons["access"]==4) && respons["name"]!=" Татьяна, Мамчур"){
+                    if(respons["access"]==1 || respons["access"]==4){
                         h_su.remove();
                         su_wrap.remove();
                     }
@@ -80,30 +79,6 @@ $(document).ready ( function(){
                         } 
                     }
                 });
-                //Список топчиков начало
-                $.ajax({
-                    type:"POST",
-                    url:"/break/modules/get_top_list.php",
-                    dataType: "json",
-                    success: function(respons){
-                        var add_block="<div class='top_right'><div class='top_right-item top_right-item_opened'><span>TOP за вчера</span></div></div>";
-                        $("body").append(add_block);
-                        var top_block_item = $('.top_right-item_opened');
-                       
-                        top_block_item.append("<div class='topchik_block'><div class='topchik_block-photo'><img src='/break/image/avatars/"+respons[0]+".jpg'></div><div class='topchik_block-text'>"+respons[1]+": лучший C-SAT за вчера - "+respons[2]+"</div></div>");
-                        top_block_item.append("<div class='topchik_block'><div class='topchik_block-photo'><img src='/break/image/avatars/"+respons[3]+".jpg'></div><div class='topchik_block-text'>"+respons[4]+": лучший AHT за вчера - "+respons[5]+"</div></div>");
-                        top_block_item.append("<div class='topchik_block'><div class='topchik_block-photo'><img src='/break/image/avatars/"+respons[6]+".jpg'></div><div class='topchik_block-text'>"+respons[7]+": лучший SR за вчера - "+respons[8]+"</div></div>");
-                        top_block_item.append("<div class='topchik_block'><div class='topchik_block-photo'><img src='/break/image/avatars/"+respons[9]+".jpg'></div><div class='topchik_block-text'>"+respons[10]+": лучший TSS за вчера - "+respons[11]+"</div></div>");
-                        top_block_item.append("<div class='topchik_block'><div class='topchik_block-photo'><img src='/break/image/avatars/"+respons[12]+".jpg'></div><div class='topchik_block-text'>"+respons[13]+": лучший %Work за вчера - "+respons[14]+"</div></div>");
-                        top_block_item.append("<div class='topchik_block'><div class='topchik_block-photo'><img src='/break/image/avatars/"+respons[15]+".jpg'></div><div class='topchik_block-text'>"+respons[16]+": лучший NPS за вчера - "+respons[17]+"</div></div>");
-                       
-
-
-                    }
-                });
-
-                //список топчиков конец
-
             }
         }
     }); 

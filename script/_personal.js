@@ -65,157 +65,145 @@ $(document).ready ( function(){
             var ind_item=$(".kpi_item");
             var per_text_wrap=$(".personal_text");
             var z= 1;
-            if(respons.length ==2){ // смотрим есть ли данные в масиве
-                if(respons[1]["id"]=='date'){
-                    z = 0;
-                    $(".kpi_date").text(respons[1]["date_of_issue"]); // вставляем дату устройства на работу
-                } else {
-                    $(".kpi_date").text(respons[0]["date_of_issue"]) // вставляем дату устройства на работу
-                }
-                //вставляем все показатели по блокам 
-                ind_wrap.eq(0).text(respons[z]["klk"].replace(",",".")*1+"%");
-                if(respons[z]["klk"].replace(",",".")>=90){
-                    ind_item.eq(1).addClass("kpi_ok");
-                } else if(respons[z]["klk"].replace(",",".")<90 && respons[1]["klk"].replace(",",".")>=81){
-                    ind_item.eq(1).addClass("kpi_good");
-                }else if(respons[z]["klk"].replace(",",".")<81){
-                    ind_item.eq(1).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(1).text(respons[z]["csat"].replace(",",".")*1+"%");
-                if(respons[z]["csat"].replace(",",".")>=32){
-                    ind_item.eq(2).addClass("kpi_ok");
-                } else if(respons[z]["csat"].replace(",",".")<32 && respons[1]["csat"].replace(",",".")>=30){
-                    ind_item.eq(2).addClass("kpi_good");
-                }else if(respons[z]["csat"].replace(",",".")<30){
-                    ind_item.eq(2).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(2).text(respons[z]["aht"].replace(",",".")*1+" c");
-                if(respons[z]["aht"].replace(",",".")<=300){
-                    ind_item.eq(3).addClass("kpi_ok");
-                } else if(respons[z]["aht"].replace(",",".")>300 && respons[1]["aht"].replace(",",".")<=360){
-                    ind_item.eq(3).addClass("kpi_good");
-                }else if(respons[z]["aht"].replace(",",".")>360){
-                    ind_item.eq(3).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(3).text(respons[z]["sr"].replace(",",".")*1+"%");
-                if(respons[z]["sr"].replace(",",".")>=62){
-                    ind_item.eq(4).addClass("kpi_ok");
-                } else if(respons[z]["sr"].replace(",",".")<62 && respons[1]["sr"].replace(",",".")>=56){
-                    ind_item.eq(4).addClass("kpi_good");
-                }else if(respons[z]["sr"].replace(",",".")<56){
-                    ind_item.eq(4).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(6).text(respons[z]["workBreak"].replace(",",".")*1+"%");
-                if(respons[z]["workBreak"].replace(",",".")<=18){
-                    ind_item.eq(7).addClass("kpi_ok");
-                } else if(respons[z]["workBreak"].replace(",",".")>18){
-                    ind_item.eq(7).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(7).text(respons[z]["tss"].replace(",",".")*1+"%");
-                if(respons[z]["tss"].replace(",",".")>=90){
-                    ind_item.eq(8).addClass("kpi_ok");
-                } else if(respons[z]["tss"].replace(",",".")<90){
-                    ind_item.eq(8).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(8).text(respons[z]["sts"].replace(",",".")*1+"%");
-                if(respons[z]["sts"].replace(",",".")>=90){
-                    ind_item.eq(9).addClass("kpi_ok");
-                } else if(respons[z]["sts"].replace(",",".")<90){
-                    ind_item.eq(9).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(9).text(respons[z]["rft"].replace(",",".")*1+"%");
-                if(respons[z]["rft"].replace(",",".")>=80){
-                    ind_item.eq(10).addClass("kpi_ok");
-                } else if(respons[z]["rft"].replace(",",".")<80){
-                    ind_item.eq(10).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(10).text(respons[z]["phone"].replace(",",".")*1+"%");
-                if(respons[z]["phone"].replace(",",".")>=50){
-                    ind_item.eq(11).addClass("kpi_ok");
-                } else if(respons[z]["phone"].replace(",",".")<50){
-                    ind_item.eq(11).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(11).text(respons[z]["email"].replace(",",".")*1+"%");
-                if(respons[z]["email"].replace(",",".")>=13){
-                    ind_item.eq(12).addClass("kpi_ok");
-                } else if(respons[z]["email"].replace(",",".")<13){
-                    ind_item.eq(12).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(12).text(respons[z]["work"].replace(",",".")*1+"%");
-                if(respons[z]["work"].replace(",",".")>=30){
-                    ind_item.eq(13).addClass("kpi_ok");
-                } else if(respons[z]["work"].replace(",",".")<30){
-                    ind_item.eq(13).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(13).text(respons[z]["klk_happy"].replace(",",".")*1+"%");
-                if(respons[z]["klk_happy"].replace(",",".")>=90){
-                    ind_item.eq(14).addClass("kpi_ok");
-                } else if(respons[z]["klk_happy"].replace(",",".")<90 && respons[1]["klk_happy"].replace(",",".")>=85.5){
-                    ind_item.eq(14).addClass("kpi_good");
-                }else if(respons[z]["klk_happy"].replace(",",".")<85.5){
-                    ind_item.eq(14).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(14).text(respons[z]["nps"].replace(",",".")*1+"%");
-                if(respons[z]["nps"].replace(",",".")>=32){
-                    ind_item.eq(15).addClass("kpi_ok");
-                } else if(respons[z]["nps"].replace(",",".")<32){
-                    ind_item.eq(15).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(15).text(respons[z]["reg"].replace(",",".")*1+"%");
-                if(respons[z]["reg"].replace(",",".")>=95){
-                    ind_item.eq(16).addClass("kpi_ok");
-                } else if(respons[z]["reg"].replace(",",".")<95){
-                    ind_item.eq(16).addClass("kpi_bad");
-                }
-
-                ind_wrap.eq(16).text(respons[z]["sales_coef"].replace(",",".")*1);
-                if(respons[z]["sales_coef"].replace(",",".")<=8){
-                    ind_item.eq(17).addClass("kpi_ok");
-                } else if(respons[z]["sales_coef"].replace(",",".")>8 && respons[1]["sales_coef"].replace(",",".")<=12){
-                    ind_item.eq(17).addClass("kpi_good");
-                }else if(respons[z]["sales_coef"].replace(",",".")>12){
-                    ind_item.eq(17).addClass("kpi_bad");
-                }
-                ind_wrap.eq(17).text(respons[z]["time"].replace(",",".")*1);
-                ind_wrap.eq(18).text(respons[z]["plan_hours"].replace(",",".")*1);
-                per_text_wrap.eq(2).text(respons[z]["date_of_issue"]);
-                $(".personal_callcraft_lvl").text(Math.floor(respons[z]["exp"]/80));
-                $(".personal_callcraft_exp").text(respons[z]["exp"]-Math.floor(respons[z]["exp"]/80)*80+"/80");
-                $(".personal_callcraft_rank").text(respons[z]["rank"]);
-                var arr_kpi = kpi(respons[z]["klk"], respons[z]["csat"],respons[z]["aht"],respons[z]["sr"] ,respons[z]["sts"], respons[z]["sales_coef"]);
-                if(localStorage.getItem('access')==4){
-                    ind_item.eq(7).after(ind_item.eq(2));
-                    ind_item.eq(7).after(ind_item.eq(3));
-                    ind_item.eq(1).after(ind_item.eq(17));
-                    ind_item.eq(1).after(ind_item.eq(9));
-                    ind_wrap.eq(4).text((arr_kpi["kpi_cross"])+"%");
-                    ind_wrap.eq(5).text(arr_kpi["premiya_cross"]);
-                } else{
-                    ind_wrap.eq(4).text((arr_kpi["kpi"])+"%");
-                    ind_wrap.eq(5).text(arr_kpi["premiya"]);
-                }
+            if(respons[1]["id"]=='date'){
+                var z = 0;
+                $(".kpi_date").text(respons[1]["date_of_issue"]);
             } else {
                 $(".kpi_date").text(respons[0]["date_of_issue"])
             }
-        },
-        error:function(respons){
-            console.log("Не удалось получить данные.");
+
+            ind_wrap.eq(0).text(respons[z]["klk"].replace(",",".")*1+"%");
+            if(respons[z]["klk"].replace(",",".")>=90){
+                ind_item.eq(1).addClass("kpi_ok");
+            } else if(respons[z]["klk"].replace(",",".")<90 && respons[1]["klk"].replace(",",".")>=81){
+                ind_item.eq(1).addClass("kpi_good");
+            }else if(respons[z]["klk"].replace(",",".")<81){
+                ind_item.eq(1).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(1).text(respons[z]["csat"].replace(",",".")*1+"%");
+            if(respons[z]["csat"].replace(",",".")>=32){
+                ind_item.eq(2).addClass("kpi_ok");
+            } else if(respons[z]["csat"].replace(",",".")<32 && respons[1]["csat"].replace(",",".")>=30){
+                ind_item.eq(2).addClass("kpi_good");
+            }else if(respons[z]["csat"].replace(",",".")<30){
+                ind_item.eq(2).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(2).text(respons[z]["aht"].replace(",",".")*1+" c");
+            if(respons[z]["aht"].replace(",",".")<=300){
+                ind_item.eq(3).addClass("kpi_ok");
+            } else if(respons[z]["aht"].replace(",",".")>300 && respons[1]["aht"].replace(",",".")<=360){
+                ind_item.eq(3).addClass("kpi_good");
+            }else if(respons[z]["aht"].replace(",",".")>360){
+                ind_item.eq(3).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(3).text(respons[z]["sr"].replace(",",".")*1+"%");
+            if(respons[z]["sr"].replace(",",".")>=62){
+                ind_item.eq(4).addClass("kpi_ok");
+            } else if(respons[z]["sr"].replace(",",".")<62 && respons[1]["sr"].replace(",",".")>=56){
+                ind_item.eq(4).addClass("kpi_good");
+            }else if(respons[z]["sr"].replace(",",".")<56){
+                ind_item.eq(4).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(6).text(respons[z]["workBreak"].replace(",",".")*1+"%");
+            if(respons[z]["workBreak"].replace(",",".")<=18){
+                ind_item.eq(7).addClass("kpi_ok");
+            } else if(respons[z]["workBreak"].replace(",",".")>18){
+                ind_item.eq(7).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(7).text(respons[z]["tss"].replace(",",".")*1+"%");
+            if(respons[z]["tss"].replace(",",".")>=90){
+                ind_item.eq(8).addClass("kpi_ok");
+            } else if(respons[z]["tss"].replace(",",".")<90){
+                ind_item.eq(8).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(8).text(respons[z]["sts"].replace(",",".")*1+"%");
+            if(respons[z]["sts"].replace(",",".")>=90){
+                ind_item.eq(9).addClass("kpi_ok");
+            } else if(respons[z]["sts"].replace(",",".")<90){
+                ind_item.eq(9).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(9).text(respons[z]["rft"].replace(",",".")*1+"%");
+            if(respons[z]["rft"].replace(",",".")>=80){
+                ind_item.eq(10).addClass("kpi_ok");
+            } else if(respons[z]["rft"].replace(",",".")<80){
+                ind_item.eq(10).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(10).text(respons[z]["phone"].replace(",",".")*1+"%");
+            if(respons[z]["phone"].replace(",",".")>=50){
+                ind_item.eq(11).addClass("kpi_ok");
+            } else if(respons[z]["phone"].replace(",",".")<50){
+                ind_item.eq(11).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(11).text(respons[z]["email"].replace(",",".")*1+"%");
+            if(respons[z]["email"].replace(",",".")>=13){
+                ind_item.eq(12).addClass("kpi_ok");
+            } else if(respons[z]["email"].replace(",",".")<13){
+                ind_item.eq(12).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(12).text(respons[z]["work"].replace(",",".")*1+"%");
+            if(respons[z]["work"].replace(",",".")>=30){
+                ind_item.eq(13).addClass("kpi_ok");
+            } else if(respons[z]["work"].replace(",",".")<30){
+                ind_item.eq(13).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(13).text(respons[z]["klk_happy"].replace(",",".")*1+"%");
+            if(respons[z]["klk_happy"].replace(",",".")>=90){
+                ind_item.eq(14).addClass("kpi_ok");
+            } else if(respons[z]["klk_happy"].replace(",",".")<90 && respons[1]["klk_happy"].replace(",",".")>=85.5){
+                ind_item.eq(14).addClass("kpi_good");
+            }else if(respons[z]["klk_happy"].replace(",",".")<85.5){
+                ind_item.eq(14).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(14).text(respons[z]["nps"].replace(",",".")*1+"%");
+            if(respons[z]["nps"].replace(",",".")>=32){
+                ind_item.eq(15).addClass("kpi_ok");
+            } else if(respons[z]["nps"].replace(",",".")<32){
+                ind_item.eq(15).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(15).text(respons[z]["reg"].replace(",",".")*1+"%");
+            if(respons[z]["reg"].replace(",",".")>=95){
+                ind_item.eq(16).addClass("kpi_ok");
+            } else if(respons[z]["reg"].replace(",",".")<95){
+                ind_item.eq(16).addClass("kpi_bad");
+            }
+
+            ind_wrap.eq(16).text(respons[z]["time"].replace(",",".")*1);
+            ind_wrap.eq(17).text(respons[z]["plan_hours"].replace(",",".")*1);
+            per_text_wrap.eq(2).text(respons[1]["date_of_issue"]);
+            $(".personal_callcraft_lvl").text(Math.floor(respons[z]["exp"]/80));
+            $(".personal_callcraft_exp").text(respons[z]["exp"]-Math.floor(respons[z]["exp"]/80)*80+"/80");
+            $(".personal_callcraft_rank").text(respons[z]["rank"]);
+            var arr_kpi = kpi(respons[0]["klk"], respons[0]["csat"],respons[0]["aht"],respons[0]["sr"]);
+            ind_wrap.eq(4).text((arr_kpi["kpi"]).toFixed(2)+"%");
+            if(arr_kpi["kpi"]>=100){
+                ind_wrap.eq(5).text("50%");
+            } else  if(arr_kpi["kpi"]<100 && arr_kpi["kpi"]>=95){
+                ind_wrap.eq(5).text("40%");
+            } else  if(arr_kpi["kpi"]<95 && arr_kpi["kpi"]>=90){
+                ind_wrap.eq(5).text("30%");
+            } else  if(arr_kpi["kpi"]<90 && arr_kpi["kpi"]>=80){
+                ind_wrap.eq(5).text("20%");
+            } else  if(arr_kpi["kpi"]<80 && arr_kpi["kpi"]>=70){
+                ind_wrap.eq(5).text("10%");
+            } else  if(arr_kpi["kpi"]<70){
+                ind_wrap.eq(5).text("0%");
+            }
         }
-    });
-    //GET INDICATORS END
+    }); 
+    // GET INDICATORS END
 
 });
 function break_order(btn){
@@ -384,27 +372,19 @@ function open_kpi (){
     //Указываем вес показателей
     var app =' <div class="kpi kpi_custom">\
 <div class="kpi_item">\
-<div class="kpi_text" title="Контрольный лист качества(оценка звонка). Цель 90%.">КЛК</div>\
+<div class="kpi_text" title="Контрольный лист качества(оценка звонка)">КЛК</div>\
 <input type="text" class="kpi_indi kpi_indi_custom">\
 </div>\
 <div class="kpi_item">\
-<div class="kpi_text" title="Количество C-SAT оценок от абонента после звонка. Цель 32%.">C`sat</div>\
+<div class="kpi_text" title="Количество C-SAT оценок от абонента после звонка">C`sat</div>\
 <input type="text" class="kpi_indi kpi_indi_custom">\
 </div>\
 <div class="kpi_item">\
-<div class="kpi_text" title="Средняя длительность разговора в звонке. Цель 300 c.">AHT</div>\
+<div class="kpi_text" title="Средняя длительность разговора в звонке">AHT</div>\
 <input type="text" class="kpi_indi kpi_indi_custom">\
 </div>\
 <div class="kpi_item">\
-<div class="kpi_text" title="Решение тех вопросов без переключения на СТП и без СО. Цель 62%.">SR</div>\
-<input type="text" class="kpi_indi kpi_indi_custom">\
-</div>\
-<div class="kpi_item">\
-<div class="kpi_text" title="Количество обращений в которых было предложено помощник по продажам 2,9. Цель 70%.">STS/2.9</div>\
-<input type="text" class="kpi_indi kpi_indi_custom">\
-</div>\
-<div class="kpi_item">\
-<div class="kpi_text" title="Количество часов на одну продажу. Цель 8.">Sales Coef</div>\
+<div class="kpi_text" title="Решение тех вопросов без переключения на СТП и без СО">SR</div>\
 <input type="text" class="kpi_indi kpi_indi_custom">\
 </div>\
 <div class="kpi_item">\
@@ -413,14 +393,6 @@ function open_kpi (){
 </div>\
 <div class="kpi_item">\
 <div class="kpi_text" title="Процент премии который вы получите">% премии</div>\
-<div class="kpi_indi kpi_indi_custom">0</div>\
-</div>\
-<div class="kpi_item">\
-<div class="kpi_text" title="Процент выполнения всех показателей">% KPI Cross</div>\
-<div class="kpi_indi kpi_indi_custom">0</div>\
-</div>\
-<div class="kpi_item">\
-<div class="kpi_text" title="Процент премии который вы получите">% премии Cross</div>\
 <div class="kpi_indi kpi_indi_custom">0</div>\
 </div>\
 <button onclick="close_kpi()">Закрыть</button>\
@@ -434,39 +406,29 @@ function close_kpi(){
 }
 function calc_kpi(){
     var item = $(".kpi_indi_custom");
-    var res_kpi = kpi(item.eq(0).val(),item.eq(1).val(),item.eq(2).val(),item.eq(3).val(), item.eq(4).val(), item.eq(5).val());
-    item.eq(6).text(res_kpi["kpi"]);
-    item.eq(7).text(res_kpi["premiya"]);
-    item.eq(8).text(res_kpi["kpi_cross"]);
-    item.eq(9).text(res_kpi["premiya_cross"]);
+    var res_kpi = kpi(item.eq(0).val(),item.eq(1).val(),item.eq(2).val(),item.eq(3).val());
+    item.eq(4).text(res_kpi["kpi"]);
+    item.eq(5).text(res_kpi["premiya"]);
 
 }
-function kpi(klk="0",csat="0", aht="0",sr="0", sts="0", sales="100"){
+function kpi(klk,csat, aht,sr){
     var weight_klk = 0.3;
     var weight_csat = 0.2;
     var weight_aht = 0.25;
     var weight_sr = 0.25;            
-    var weight_sales = 0.25;            
-    var weight_sts = 0.20;            
     var result_klk = 0;
     var result_csat = 0;
     var result_aht = 0;
     var result_sr = 0;
-    var result_sts = 0;
-    var result_sales = 0;
     var fact_klk = klk;
     var fact_csat = csat;
     var fact_aht = aht;
     var fact_sr = sr;
-    var fact_sts = sts;
-    var fact_sales = sales;
     var result_arr = [];
     fact_klk= fact_klk.replace(",", ".");
     fact_csat= fact_csat.replace(",", ".");
     fact_aht= fact_aht.replace(",", ".");
     fact_sr= fact_sr.replace(",", ".");
-    fact_sts= fact_sts.replace(",", ".");
-    fact_sales= fact_sales.replace(",", ".");
     //считаем КЛК
     if(fact_klk*1<90*0.9){
         result_klk =0;
@@ -499,31 +461,13 @@ function kpi(klk="0",csat="0", aht="0",sr="0", sts="0", sales="100"){
     } else {
         result_sr =(fact_sr*1/62)*100*weight_sr;
     }
-    if(fact_sts*1<81){
-        result_sts =0;
-    } else if(2-(fact_sts*1/90)>1.05){
-        result_sts =weight_sts*1.05*100;
-    } else {
-        result_sts =(fact_sts*1/90)*100*weight_sts;
-    }
-    if(fact_sales*1>12){
-        result_sales =0;
-    } else if(2-(fact_sales*1/8)>1.05){
-        result_sales =weight_sales*1.05*100;
-    } else {
-        result_sales =(2-(fact_sales*1/8))*100*weight_sales;
-    }
     var result = result_sr+result_csat+result_aht+result_klk;
-    var result_cross = result_sr+result_sts+result_sales+result_klk;
     //выводим процент выполнения КПЭ
     result_arr["klk"] = result_klk;
     result_arr["csat"] = result_csat;
     result_arr["aht"] = result_aht;
     result_arr["sr"] = result_sr;
-    result_arr["sts"] = result_sts;
-    result_arr["sales"] = result_sales;
-    result_arr["kpi"] = (result_klk+result_csat+result_aht+result_sr).toFixed(2);
-    result_arr["kpi_cross"] = (result_sr+result_sts+result_sales+result_klk).toFixed(2);
+    result_arr["kpi"] = result_klk+result_csat+result_aht+result_sr;
     if(result>=100){
         result_arr["premiya"]= 50;
     } else  if(result<100 && result>=95){
@@ -537,18 +481,6 @@ function kpi(klk="0",csat="0", aht="0",sr="0", sts="0", sales="100"){
     } else  if(result<70){
         result_arr["premiya"]= 0;
     }
-    if(result_cross>=100){
-        result_arr["premiya_cross"]= 50;
-    } else  if(result_cross<100 && result_cross>=95){
-        result_arr["premiya_cross"]= 40;
-    } else  if(result_cross<95 && result_cross>=90){
-        result_arr["premiya_cross"]= 30;
-    } else  if(result_cross<90 && result_cross>=80){
-        result_arr["premiya_cross"]= 20;
-    } else  if(result_cross<80 && result_cross>=70){
-        result_arr["premiya_cross"]= 10;
-    } else  if(result_cross<70){
-        result_arr["premiya_cross"]= 0;
-    }
     return result_arr;
 }
+

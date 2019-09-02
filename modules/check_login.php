@@ -8,7 +8,7 @@ include 'connect.php';
 
 $query ="SELECT * FROM schedule WHERE id = 0";
 $result = mysqli_query($link, $query);
-// $schedule = mysqli_fetch_row($result);
+$schedule = mysqli_fetch_row($result);
 
 
 

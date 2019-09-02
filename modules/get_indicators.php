@@ -32,7 +32,6 @@ if($result){
         $indicators[$i]["plan_hours"] = $row[17];
         $indicators[$i]["exp"] = $row[18];
         $indicators[$i]["rank"] = $row[19];
-        $indicators[$i]["sales_coef"] = $row[20];
     }
     echo json_encode($indicators);
 } else{
